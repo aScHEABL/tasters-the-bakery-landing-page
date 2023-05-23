@@ -4,6 +4,7 @@ import { MdLanguage } from "react-icons/md";
 import { AppContext } from "../AppContext"; 
 import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
+// import { ColorModeSwitcher } from "../ColorModeSwitcher";
 
 function Navbar() {
     const { state, dispatch } = useContext(AppContext);
@@ -30,6 +31,7 @@ function Navbar() {
                     中文
                 </Button>
             }
+            {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_intro_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_product_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_gallery_btn}</Button>
