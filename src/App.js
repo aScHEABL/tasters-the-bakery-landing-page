@@ -8,21 +8,26 @@ import {
   VStack,
   Code,
   Grid,
-  Container,
+  Flex,
+  Container
 } from '@chakra-ui/react';
 import theme from './theme';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AppContextProvider } from './AppContext';
-import FirstPage from './components/FirstPage';
+import Navbar from './components/Navbar';
+import { motion, useScroll } from "framer-motion"
+import Homepage from './components/Homepage';
 
 function App() {
+
   // <ColorModeSwitcher justifySelf="flex-end" />
   return (
     <ChakraProvider theme={theme}>
       <AppContextProvider>
-        <Container maxW='container.xl'>
-          <FirstPage />
-        </Container>
+        <Flex>
+          <Navbar />
+          <Homepage />
+        </Flex>
       </AppContextProvider>
     </ChakraProvider>
   );
