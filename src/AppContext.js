@@ -8,7 +8,7 @@ const initialState = {
 
 function reducer(state, action) {
     switch (action.type) {
-        case 'switch_language':
+        case 'SWITCH_LANGUAGE':
             return {
                 ...state,
                 language: state.language === "zh-tw" ? "en-us" : "zh-tw",
