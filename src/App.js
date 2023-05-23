@@ -1,15 +1,16 @@
 import React from 'react';
 import {
   ChakraProvider,
+  extendTheme,
   Box,
   Text,
   Link,
   VStack,
   Code,
   Grid,
-  theme,
   Container,
 } from '@chakra-ui/react';
+import theme from './theme';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AppContextProvider } from './AppContext';
 import FirstPage from './components/FirstPage';
@@ -19,7 +20,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <AppContextProvider>
-        <Container>
+        <Container maxW='container.xl'>
           <FirstPage />
         </Container>
       </AppContextProvider>
