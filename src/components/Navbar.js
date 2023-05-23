@@ -4,19 +4,23 @@ import { MdLanguage } from "react-icons/md";
 import { AppContext } from "../AppContext"; 
 import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
-import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
-{/* <ColorModeSwitcher justifySelf="flex-end" /> */}
-function FirstPage() {
+function Navbar() {
     const { state, dispatch } = useContext(AppContext);
-    const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation
+    const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
 
     const handleLanguageSwitch = () => {
         dispatch({ type: 'SWITCH_LANGUAGE' });
     }
     
     return (
-        <Flex as='nav' justify='flex-end'>
+        <Flex pos='fixed' top='0' left='0%' right='10%' as='nav' justify='flex-end' zIndex={1} w={{
+            sm: '30em', // 480px
+            md: '48em', // 768px
+            lg: '62em', // 992px
+            xl: '80em', // 1280px
+            '2xl': '96em', // 1536px
+        }}>
             {state.language === "zh-tw" ? 
                 <Button size='lg' leftIcon={<MdLanguage />} colorScheme='gray' variant='ghost' onClick={handleLanguageSwitch}>
                     English
@@ -35,4 +39,4 @@ function FirstPage() {
     )
 }
 
-export default FirstPage;
+export default Navbar;
