@@ -22,7 +22,7 @@ function App() {
 
   // <ColorModeSwitcher justifySelf="flex-end" />
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <AppContextProvider>
         <Flex>
           <Navbar />
