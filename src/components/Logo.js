@@ -8,9 +8,9 @@ function Logo() {
     const svgStyle = () => {
         switch (location.pathname) {
             case "/":
-                return { position: "absolute", top: "10%", left: "15%" };
+                return { position: "absolute", top: "8%", left: "15%" };
             case "/menu":
-                return { }
+                return { position: "absolute", width: "10%", left: "5%" }
             default:
                 return { };
         }
@@ -22,7 +22,7 @@ function Logo() {
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="321.62 260.62 380.77 246.77"
-        width="80%"
+        width="100%"
         >
         <g
             fill="#6776a0"
