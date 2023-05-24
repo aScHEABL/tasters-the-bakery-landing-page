@@ -1,12 +1,22 @@
 import React, { useContext } from "react";
-import { Flex, Button } from "@chakra-ui/react";
+import { Flex, Button, IconButton, useDisclosure, 
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton, } from "@chakra-ui/react";
 import { MdLanguage } from "react-icons/md";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AppContext } from "../AppContext"; 
 import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
 // import { ColorModeSwitcher } from "../ColorModeSwitcher";
 
 function Navbar() {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef = React.useRef()
     const { state, dispatch } = useContext(AppContext);
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
 
@@ -35,8 +45,28 @@ function Navbar() {
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_intro_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_product_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_gallery_btn}</Button>
-            <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_order_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_contact_btn}</Button>
+            <IconButton colorScheme="teal" icon={<AiOutlineShoppingCart />}
+            ref={btnRef} onClick={onOpen} />
+            <Drawer
+                isOpen={isOpen}
+                placement='right'
+                onClose={onClose}
+                finalFocusRef={btnRef}
+            >
+                <DrawerOverlay />
+                <DrawerContent>
+                    <DrawerCloseButton />
+                    <DrawerHeader></DrawerHeader>
+                    <DrawerBody></DrawerBody>
+                    <DrawerFooter>
+                        <Button variant='outline' mr={3} onClick={onClose}>
+                            Cancel
+                        </Button>
+                        <Button colorScheme='blue'>Save</Button>
+                    </DrawerFooter>
+                </DrawerContent>
+            </Drawer>
         </Flex>
     )
 }
