@@ -43,7 +43,7 @@ function Navbar() {
             }
             {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_intro_btn}</Button>
-            <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_product_btn}</Button>
+            {/* <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_product_btn}</Button> */}
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_gallery_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_contact_btn}</Button>
             <IconButton colorScheme="teal" icon={<AiOutlineShoppingCart />}

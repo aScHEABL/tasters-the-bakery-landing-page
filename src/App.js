@@ -17,6 +17,8 @@ import { AppContextProvider } from './AppContext';
 import Navbar from './components/Navbar';
 import { motion, useScroll } from "framer-motion"
 import HomePage from './components/HomePage';
+import MenuPage from './components/MenuPage';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
 
@@ -24,10 +26,15 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <AppContextProvider>
-        <Flex>
-          <Navbar />
-          <HomePage />
-        </Flex>
+        <HashRouter>
+          <Flex>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/menu" element={<MenuPage />} />
+            </Routes>
+          </Flex>
+        </HashRouter>
       </AppContextProvider>
     </ChakraProvider>
   );
