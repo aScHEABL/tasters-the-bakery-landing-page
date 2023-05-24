@@ -1,9 +1,23 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
+import { useLocation } from "react-router-dom";
 
 function Logo() {
+    const location = useLocation();
+
+    const svgStyle = () => {
+        switch (location.pathname) {
+            case "/":
+                return { position: "absolute", top: "10%", left: "15%" };
+            case "/menu":
+                return { }
+            default:
+                return { };
+        }
+    }
+
   return (
-    <Box position="absolute" top="10%" left="15%">
+    <Box style={svgStyle()}>
         <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
