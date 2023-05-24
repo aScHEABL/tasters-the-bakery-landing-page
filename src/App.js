@@ -16,7 +16,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AppContextProvider } from './AppContext';
 import Navbar from './components/Navbar';
 import { motion, useScroll } from "framer-motion"
-import Homepage from './components/Homepage';
+import HomePage from './components/HomePage';
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
       <AppContextProvider>
         <Flex>
           <Navbar />
-          <Homepage />
+          <HomePage />
         </Flex>
       </AppContextProvider>
     </ChakraProvider>
