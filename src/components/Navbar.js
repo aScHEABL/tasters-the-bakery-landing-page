@@ -15,7 +15,7 @@ function Navbar() {
     }
     
     return (
-        <Flex pos='fixed' top='0' left='0%' right='10%' as='nav' justify='flex-end' zIndex={1} w={{
+        <Flex py={4} pos='fixed' top='0' left='0%' right='0%' as='nav' justify='flex-end' zIndex="10" w={{
             sm: '30em', // 480px
             md: '48em', // 768px
             lg: '62em', // 992px
