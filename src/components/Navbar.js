@@ -59,12 +59,10 @@ function Navbar() {
                 </Button>
             }
             {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
-            <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_intro_btn}</Button>
+            <Button size='lg' colorScheme='gray' variant='ghost' as={Link} to='/'>{displayLanguage.nav_home_btn}</Button>
             {/* <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_product_btn}</Button> */}
-            { (location.pathname === "/menu") ? <Button size='lg' colorScheme='gray' variant='ghost' as={Link} to='/'>{displayLanguage.nav_home_btn}</Button> 
-                :
-            null }
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_gallery_btn}</Button>
+            <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_intro_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_contact_btn}</Button>
             <IconButton colorScheme="teal" icon={<AiOutlineShoppingCart />}
             ref={btnRef} onClick={onOpen} />
