@@ -12,12 +12,15 @@ function MenuPage() {
     const { state } = useContext(AppContext);
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     return (
-        <Flex w='100vw' h='100vh'>
-            {/* <Flex width="100%" height="40%" position="relative" top="20%" bgColor="white" justify="center">
-                <Image objectFit="cover" width="100%" objectPosition="center" src="https://cdn.discordapp.com/attachments/1110904435569332305/1110911791476785162/00006-3705878774.png" />
-            </Flex> */}
-            <Carousel />
-        </Flex>
+        <Box w='100vw' minH='100vh' wrap="wrap">
+            <Box width="100%" height="15%" />
+            <Box width="100%" height="50%">
+                <Carousel />
+            </Box>
+            <Flex wrap="wrap" justify="center">
+                
+            </Flex>
+        </Box>
     )
 }
 
