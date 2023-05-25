@@ -37,7 +37,7 @@ export default () => {
     >
       {images.map((image) => 
         <SwiperSlide>
-          <Image w="100%" objectFit="scale-down" objectPosition="top" src={image} />
+          <Image w="100%" objectFit="cover" objectPosition="center" src={image} />
         </SwiperSlide>)}
 
     </Swiper>

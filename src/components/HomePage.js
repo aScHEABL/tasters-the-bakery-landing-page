@@ -26,7 +26,7 @@ function HomePage() {
             <Flex position="absolute" left="10%" top="30%" width="50%" gap={8} wrap="wrap">
                 <Heading as='h1' fontSize='6xl'>{displayLanguage.intro_h1_0}</Heading>
                 <Text fontSize='lg'>{displayLanguage.intro_paragraph_0}</Text>
-                <Button colorScheme="teal" leftIcon={<AiOutlineShoppingCart />}
+                <Button size="lg" colorScheme="teal" leftIcon={<AiOutlineShoppingCart />}
                 as={Link} to='/menu'>{displayLanguage.nav_order_btn}</Button>
             </Flex>
         </Flex>
