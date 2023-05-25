@@ -3,7 +3,7 @@ const menu = [
         name: "CLASSIC ROAST TURKEY",
         price: 3780,
         image_src: "https://cdn.imweb.me/thumbnail/20221103/a2497b9ad85a2.jpg",
-        description: "It is made from Taiwan North Port turkey, which is high in protein and rich in iron, zinc, phosphorus, potassium and vitamin B. It has a unique taste and texture that will leave you wanting more. Comes with dipping sauce and pepper packet."
+        description: "It is made from Taiwanese North Port turkey, which is high in protein and rich in iron, zinc, phosphorus, potassium and vitamin B. It has a unique taste and texture that will leave you wanting more. Comes with dipping sauce and pepper packet."
     },
     {
         name: "CLASSIC CHEESE CAKE - 7 INCHES",
