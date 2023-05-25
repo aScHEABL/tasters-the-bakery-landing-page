@@ -1,12 +1,18 @@
+import React, { useContext } from 'react';
+import { AppContext } from '../AppContext';
+import zhTwTranslation from "../language/zh-tw-lang.json";
+import enUsTranslation from "../language/en-us-lang.json";
 import { Carousel } from '@mantine/carousel';
 import { AiOutlineStar } from "react-icons/ai";
 import { v4 as uuidv4 } from 'uuid';
 import { CardFooter, Card, CardBody, Image, Stack, Text, Heading, Divider, Button, ButtonGroup, LightMode, } from '@chakra-ui/react';
 
 function CarouselCard(data) {
+  const { state } = useContext(AppContext);
+  const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
   return (
     <LightMode>
-      <Card maxW='sm'>
+      <Card size="md">
         <CardBody p="0" colorScheme="white">
           <Image
             src={data.product.image_src}
@@ -25,7 +31,7 @@ function CarouselCard(data) {
               {data.product.price} $ TWD
           </Text>
           <Button size='lg' variant='solid' colorScheme='blue'>
-            購物車
+            {displayLanguage.shopping_cart_btn}
           </Button>
         </CardFooter>
       </Card>

@@ -7,12 +7,14 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import Logo from "./Logo";
 import CarouselImage from "./CarouselImage";
 import CarouselCard from "./CarouselCard";
-import menu from "../language/menu-zh-tw";
+import menu_TW from "../language/menu-zh-tw";
+import menu_EN from "../language/menu-en-us";
 
 
 function MenuPage() {
     const { state } = useContext(AppContext);
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
+    const menu = state.language === "zh-tw" ? menu_TW : menu_EN ;
     
     return (
         <Box w='100vw' minH='100vh' wrap="wrap">
