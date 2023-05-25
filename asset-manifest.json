@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tasters-the-bakery-landing-page/static/css/main.b410b47e.css",
+    "main.js": "/tasters-the-bakery-landing-page/static/js/main.23634721.js",
+    "static/js/787.3fbf9d24.chunk.js": "/tasters-the-bakery-landing-page/static/js/787.3fbf9d24.chunk.js",
+    "index.html": "/tasters-the-bakery-landing-page/index.html",
+    "main.b410b47e.css.map": "/tasters-the-bakery-landing-page/static/css/main.b410b47e.css.map",
+    "main.23634721.js.map": "/tasters-the-bakery-landing-page/static/js/main.23634721.js.map",
+    "787.3fbf9d24.chunk.js.map": "/tasters-the-bakery-landing-page/static/js/787.3fbf9d24.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b410b47e.css",
+    "static/js/main.23634721.js"
+  ]
+}
