@@ -16,7 +16,7 @@ function HomePage() {
         <Flex w='100vw' h='100vh' position="relative" zIndex="1">
             <Logo />
             <Box w="100%" h="100%"
-            bgImage="url('https://cdn.imweb.me/upload/S202102197ebdf7f722b03/8b5a635481540.jpg')"
+            bgImage="url('https://source.unsplash.com/m9pzwmxm2rk')"
             bgRepeat="no-repeat"
             bgPosition="center"
             backgroundSize="cover"
