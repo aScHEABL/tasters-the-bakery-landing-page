@@ -4,6 +4,8 @@ import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
 import { AiOutlineStar } from "react-icons/ai";
 import { v4 as uuidv4 } from 'uuid';
+import menu_TW from "../language/menu-zh-tw";
+import menu_EN from "../language/menu-en-us";
 import { CardFooter, Card, CardBody, Image, Stack, Text, 
   Heading, Button, ButtonGroup, LightMode,
   useDisclosure, Drawer,
@@ -21,13 +23,13 @@ function CarouselCard(data) {
   const { state } = useContext(AppContext);
   const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
 
-  const handleClick = () => {
-    
+  const handleClick = (id) => {
+    console.log(`${id} added to shopping cart`);
   }
   return (
     <LightMode>
       <Card size="md">
-        <CardBody p="0" colorScheme="white">
+        <CardBody p="0">
           <Image
             src={data.product.image_src}
             alt='Green double couch with wooden legs'
@@ -45,7 +47,7 @@ function CarouselCard(data) {
               {data.product.price} $ TWD
           </Text>
           <Button size='lg' variant='solid' colorScheme='blue' ref={btnRef}
-          onClick={onOpen}>
+          onClick={() =>{ onOpen(); handleClick(data.product.id) }}>
             {displayLanguage.shopping_cart_btn}
           </Button>
         </CardFooter>
