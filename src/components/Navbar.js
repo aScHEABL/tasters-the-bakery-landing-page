@@ -73,6 +73,7 @@ function Navbar() {
                 placement='right'
                 onClose={onClose}
                 finalFocusRef={btnRef}
+                size="md"
             >
                 <DrawerOverlay />
                 <DrawerContent>

@@ -20,11 +20,12 @@ import { CardFooter, Card, CardBody, Image, Stack, Text,
 function CarouselCard(data) {
   const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
 
-  const handleClick = (id) => {
-    console.log(`${id} added to shopping cart`);
+  const handleClick = (index) => {
+    dispatch({ type: 'ADD_SHOPPING_CART', payload: { index } })
+    console.log(state.cart);
   }
   return (
     <LightMode>
@@ -47,31 +48,32 @@ function CarouselCard(data) {
               {data.product.price} $ TWD
           </Text>
           <Button size='lg' variant='solid' colorScheme='blue' ref={btnRef}
-          onClick={() =>{ onOpen(); handleClick(data.product.id) }}>
+          onClick={() =>{ onOpen(); handleClick(data.index); }}>
             {displayLanguage.shopping_cart_btn}
           </Button>
         </CardFooter>
       </Card>
       <DarkMode>
-        <Drawer
-                  isOpen={isOpen}
-                  placement='right'
-                  onClose={onClose}
-                  finalFocusRef={btnRef}
-              >
-                  <DrawerOverlay />
-                  <DrawerContent>
-                      <DrawerCloseButton />
-                      <DrawerHeader></DrawerHeader>
-                      <DrawerBody></DrawerBody>
-                      <DrawerFooter>
-                          <Button variant='outline' mr={3} onClick={onClose}>
-                              Cancel
-                          </Button>
-                          <Button colorScheme='blue'>Save</Button>
-                      </DrawerFooter>
-                  </DrawerContent>
-              </Drawer>
+            <Drawer
+                isOpen={isOpen}
+                placement='right'
+                onClose={onClose}
+                finalFocusRef={btnRef}
+                size="md"
+            >
+                <DrawerOverlay />
+                <DrawerContent>
+                    <DrawerCloseButton />
+                    <DrawerHeader></DrawerHeader>
+                    <DrawerBody></DrawerBody>
+                    <DrawerFooter>
+                        <Button variant='outline' mr={3} onClick={onClose}>
+                            Cancel
+                        </Button>
+                        <Button colorScheme='blue'>Save</Button>
+                    </DrawerFooter>
+                </DrawerContent>
+            </Drawer>
             </DarkMode>
     </LightMode>
   )
