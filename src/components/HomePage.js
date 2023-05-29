@@ -20,7 +20,7 @@ function HomePage() {
             bgRepeat="no-repeat"
             bgPosition="center"
             backgroundSize="cover"
-            opacity="0.2"
+            opacity="0.4"
             position="absolute"
             zIndex="-1"></Box>
             <Flex position="absolute" left="10%" top="30%" width="50%" gap={8} wrap="wrap">
