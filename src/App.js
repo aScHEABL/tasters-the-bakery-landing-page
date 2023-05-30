@@ -1,37 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   ChakraProvider,
-  extendTheme,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   Flex,
-  Container
+  useDisclosure
 } from '@chakra-ui/react';
 import theme from './theme';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AppContextProvider } from './AppContext';
 import Navbar from './components/Navbar';
-import { motion, useScroll } from "framer-motion"
 import HomePage from './components/HomePage';
 import MenuPage from './components/MenuPage';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import ShoppingCart from './components/ShoppingCart';
 
 function App() {
-
-  // <ColorModeSwitcher justifySelf="flex-end" />
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = useRef();
   return (
     <ChakraProvider theme={theme}>
       <AppContextProvider>
         <HashRouter>
           <Flex>
-            <Navbar />
+            <Navbar onOpen={onOpen} btnRef={btnRef} />
+            <ShoppingCart isOpen={isOpen} onClose={onClose} btnRef={btnRef} />
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/menu" element={<MenuPage />} />
+              <Route path="/menu" element={<MenuPage onOpen={onOpen} btnRef={btnRef} />} />
             </Routes>
           </Flex>
         </HashRouter>
