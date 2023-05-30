@@ -1,14 +1,5 @@
 import React, { useContext } from "react";
-import { Flex, Button, IconButton, 
-    useDisclosure, 
-    Box,
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton, } from "@chakra-ui/react";
+import { Flex, Button, IconButton,  } from "@chakra-ui/react";
 import { MdLanguage } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AppContext } from "../AppContext"; 
@@ -16,16 +7,13 @@ import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
 import Logo from "./Logo";
 import { useLocation } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { ColorModeSwitcher } from "../ColorModeSwitcher";
 
-function Navbar() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = React.useRef()
+function Navbar(props) {
     const { state, dispatch } = useContext(AppContext);
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     const location = useLocation();
-    const navigate = useNavigate();
 
     const renderLogo = () => {
         switch (location.pathname) {
@@ -67,27 +55,7 @@ function Navbar() {
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_intro_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_contact_btn}</Button>
             <IconButton colorScheme="teal" icon={<AiOutlineShoppingCart />}
-            ref={btnRef} onClick={onOpen} />
-            <Drawer
-                isOpen={isOpen}
-                placement='right'
-                onClose={onClose}
-                finalFocusRef={btnRef}
-                size="md"
-            >
-                <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
-                    <DrawerHeader></DrawerHeader>
-                    <DrawerBody></DrawerBody>
-                    <DrawerFooter>
-                        <Button variant='outline' mr={3} onClick={onClose}>
-                            Cancel
-                        </Button>
-                        <Button colorScheme='blue'>Save</Button>
-                    </DrawerFooter>
-                </DrawerContent>
-            </Drawer>
+            ref={props.btnRef} onClick={props.onOpen} />
         </Flex>
     )
 }

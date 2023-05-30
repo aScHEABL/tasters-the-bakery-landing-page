@@ -11,8 +11,7 @@ import menu_A from "../language/menu-zh-tw";
 import menu_B from "../language/menu-en-us";
 import { v4 as uuidv4 } from 'uuid';
 
-
-function MenuPage() {
+function MenuPage(props) {
     const { state, dispatch } = useContext(AppContext);
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     
@@ -44,7 +43,7 @@ function MenuPage() {
             <Flex wrap="wrap" gap={10} justify="center">
                 {menu.map((product, index) => (
                     <Flex width="20%" wrap="wrap" justify="center" key={uuidv4()}>
-                        <CarouselCard product={product} index={index} />
+                        <CarouselCard product={product} onOpen={props.onOpen} btnRef={props.btnRef} index={index} />
                     </Flex>
                 ))}
             </Flex>

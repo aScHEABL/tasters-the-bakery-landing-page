@@ -7,23 +7,15 @@ import { v4 as uuidv4 } from 'uuid';
 import menu_TW from "../language/menu-zh-tw";
 import menu_EN from "../language/menu-en-us";
 import { CardFooter, Card, CardBody, Image, Stack, Text, 
-  Heading, Button, ButtonGroup, LightMode,
-  useDisclosure, Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton, 
-    DarkMode} from '@chakra-ui/react';
+  Heading, Button, LightMode,
+} from '@chakra-ui/react';
 
-function CarouselCard(data) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-    const btnRef = React.useRef();
+function CarouselCard(props) {
   const { state, dispatch } = useContext(AppContext);
   const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
 
   const handleClick = (index) => {
+    // console.log(`${id} added to shopping cart`);
     dispatch({ type: 'ADD_SHOPPING_CART', payload: { index } })
     console.log(state.cart);
   }
@@ -32,49 +24,27 @@ function CarouselCard(data) {
       <Card size="md">
         <CardBody p="0">
           <Image
-            src={data.product.image_src}
+            src={props.product.image_src}
             alt='Green double couch with wooden legs'
             borderRadius='lg'
           />
           <Stack mt='6' spacing='3' px="4">
-            <Heading size='md'>{data.product.name}</Heading>
+            <Heading size='md'>{props.product.name}</Heading>
             <Text color="gray.600">
-              {data.product.description}
+              {props.product.description}
             </Text>
           </Stack>
         </CardBody>
         <CardFooter>
           <Text pr="15%" fontSize='2xl'>
-              {data.product.price} $ TWD
+              {props.product.price} $ TWD
           </Text>
-          <Button size='lg' variant='solid' colorScheme='blue' ref={btnRef}
-          onClick={() =>{ onOpen(); handleClick(data.index); }}>
+          <Button size='lg' variant='solid' colorScheme='blue' ref={props.btnRef}
+          onClick={() =>{ props.onOpen(); handleClick(props.index) }}>
             {displayLanguage.shopping_cart_btn}
           </Button>
         </CardFooter>
       </Card>
-      <DarkMode>
-            <Drawer
-                isOpen={isOpen}
-                placement='right'
-                onClose={onClose}
-                finalFocusRef={btnRef}
-                size="md"
-            >
-                <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
-                    <DrawerHeader></DrawerHeader>
-                    <DrawerBody></DrawerBody>
-                    <DrawerFooter>
-                        <Button variant='outline' mr={3} onClick={onClose}>
-                            Cancel
-                        </Button>
-                        <Button colorScheme='blue'>Save</Button>
-                    </DrawerFooter>
-                </DrawerContent>
-            </Drawer>
-            </DarkMode>
     </LightMode>
   )
 }
