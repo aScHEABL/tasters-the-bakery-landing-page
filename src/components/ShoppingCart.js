@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../AppContext"; 
 import { Drawer,
     DrawerBody,
     DrawerFooter,
@@ -8,9 +9,13 @@ import { Drawer,
     DrawerCloseButton,
     Button  } from "@chakra-ui/react";
 
+
 function ShoppingCart (props) {
+    const { state, dispatch } = useContext(AppContext);
+    const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     return (
             <Drawer
+                size='md'
                 isOpen={props.isOpen}
                 placement='right'
                 onClose={props.onClose}
@@ -19,8 +24,10 @@ function ShoppingCart (props) {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader></DrawerHeader>
-                    <DrawerBody></DrawerBody>
+                    <DrawerHeader>購物車</DrawerHeader>
+                    <DrawerBody>
+
+                    </DrawerBody>
                     <DrawerFooter>
                         <Button variant='outline' mr={3} onClick={props.onClose}>
                             Cancel
