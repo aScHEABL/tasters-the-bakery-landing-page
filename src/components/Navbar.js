@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { Flex, Button, IconButton,  } from "@chakra-ui/react";
 import { MdLanguage } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 
 function Navbar(props) {
     const { state, dispatch } = useContext(AppContext);
+    const { isOpen, onOpen, onClose } = useContext(AppContext).disclosure;
+    const btnRef = useRef();
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     const location = useLocation();
 
@@ -55,7 +57,7 @@ function Navbar(props) {
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_intro_btn}</Button>
             <Button size='lg' colorScheme='gray' variant='ghost'>{displayLanguage.nav_contact_btn}</Button>
             <IconButton colorScheme="teal" icon={<AiOutlineShoppingCart />}
-            ref={props.btnRef} onClick={props.onOpen} />
+            ref={btnRef} onClick={onOpen} />
         </Flex>
     )
 }
