@@ -8,6 +8,8 @@ import { Drawer,
     DrawerContent,
     DrawerCloseButton,
     Button  } from "@chakra-ui/react";
+import zhTwTranslation from "../language/zh-tw-lang.json";
+import enUsTranslation from "../language/en-us-lang.json";
 
 
 function ShoppingCart (props) {
