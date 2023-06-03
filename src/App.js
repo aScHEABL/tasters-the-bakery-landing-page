@@ -21,7 +21,7 @@ function App() {
             <ShoppingCart />
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/menu" element={<MenuPage onOpen={onOpen} btnRef={btnRef} />} />
+              <Route path="/menu" element={<MenuPage />} />
             </Routes>
           </Flex>
         </HashRouter>
