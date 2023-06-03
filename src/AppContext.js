@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import { useDisclosure } from '@chakra-ui/react';
 
 const AppContext = createContext();
 
@@ -49,9 +50,20 @@ function reducer(state, action) {
 
 function AppContextProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, initialState);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const contextValue = {
+        state,
+        dispatch,
+        disclosure: {
+          isOpen,
+          onOpen,
+          onClose,
+        },
+      };
 
     return (
-        <AppContext.Provider value={{ state, dispatch }}>
+        <AppContext.Provider value={contextValue}>
             {children}
         </AppContext.Provider>
     )

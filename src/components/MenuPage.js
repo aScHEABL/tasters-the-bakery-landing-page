@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Image, Flex, Box, Heading, Text, Button, Container } from "@chakra-ui/react";
 import { AppContext } from "../AppContext"; 
 import zhTwTranslation from "../language/zh-tw-lang.json";
@@ -13,6 +13,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 function MenuPage(props) {
     const { state, dispatch } = useContext(AppContext);
+    const { isOpen, onOpen, onClose } = useContext(AppContext).disclosure;
+    const btnRef = useRef();
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     
     const assignCommonId = (array1, array2) => {
@@ -34,7 +36,6 @@ function MenuPage(props) {
         dispatch({ type: 'UPDATE_MENU', payload: { menu } });
         console.log("Menu language updated");
     }, [state.language])
-
     return (
         <Box w='100vw' minH='100vh' wrap="wrap">
             <Box width="100%" height="15%" />
@@ -44,7 +45,7 @@ function MenuPage(props) {
             <Flex wrap="wrap" gap={10} justify="center">
                 {menu.map((product, index) => (
                     <Flex width="20%" wrap="wrap" justify="center" key={uuidv4()}>
-                        <CarouselCard product={product} onOpen={props.onOpen} btnRef={props.btnRef} index={index} />
+                        <CarouselCard product={product} onOpen={onOpen} btnRef={btnRef} index={index} />
                     </Flex>
                 ))}
             </Flex>
