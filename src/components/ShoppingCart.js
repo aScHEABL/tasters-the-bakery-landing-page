@@ -7,7 +7,20 @@ import { Drawer,
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    Button  } from "@chakra-ui/react";
+    Button,  
+    Flex,
+    Stack,
+    CardBody,
+    Heading,
+    Text,
+    CardFooter,
+    Card,
+    Image,
+    NumberInput,
+    NumberInputField,
+    NumberInputStepper,
+    NumberIncrementStepper,
+    NumberDecrementStepper} from "@chakra-ui/react";
 import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
 
@@ -28,9 +41,43 @@ function ShoppingCart (props) {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader>購物車</DrawerHeader>
+                    <DrawerHeader>{displayLanguage.shopping_cart_header}</DrawerHeader>
                     <DrawerBody>
-
+                        <Flex wrap='wrap' w='100%' gap={4}>
+                            {state.cart.map((product) => 
+                                (
+                                    <Card
+                                    direction='row'
+                                    overflow='hidden'
+                                    variant='outline'
+                                    width='100%'
+                                    align="center"
+                                    >
+                                        <Image
+                                            objectFit='cover'
+                                            maxW='100px'
+                                            maxH='100px'
+                                            src={product.image_src}
+                                            alt='product image'
+                                        />
+                                        <CardBody>
+                                            <Stack>
+                                                <Heading size='md'>{product.name}</Heading>
+                                            </Stack>
+                                            <Stack>
+                                                <NumberInput size='md' maxW={24} defaultValue={1}>
+                                                    <NumberInputField />
+                                                    <NumberInputStepper>
+                                                    <NumberIncrementStepper />
+                                                    <NumberDecrementStepper />
+                                                    </NumberInputStepper>
+                                                </NumberInput>
+                                            </Stack>
+                                        </CardBody>
+                                    </Card>
+                                )
+                            )}
+                        </Flex>
                     </DrawerBody>
                     <DrawerFooter>
                         <Button variant='outline' mr={3} onClick={onClose}>
