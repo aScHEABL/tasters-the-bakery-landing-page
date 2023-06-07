@@ -20,6 +20,7 @@ const colors = {
                 800: '#422107',
                 900: '#1c0800',
             }
+    
 }
 
 const { definePartsStyle, defineMultiStyleConfig } =

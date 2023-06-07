@@ -20,10 +20,11 @@ import { Drawer,
     NumberInputField,
     NumberInputStepper,
     NumberIncrementStepper,
-    NumberDecrementStepper} from "@chakra-ui/react";
+    NumberDecrementStepper,
+    } from "@chakra-ui/react";
 import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
-
+import MobileNumberInput from "./MobileNumberInput";
 
 function ShoppingCart (props) {
     const { state, dispatch } = useContext(AppContext);
@@ -52,7 +53,12 @@ function ShoppingCart (props) {
                                     variant='outline'
                                     width='100%'
                                     align="center"
-                                    colorScheme="messenger"
+                                    backgroundColor="gray.600"
+                                    transition="transform 1s ease-in-out"
+                                    _hover={{
+                                        
+                                        
+                                    }}
                                     >
                                         <Image
                                             objectFit='cover'
@@ -61,20 +67,13 @@ function ShoppingCart (props) {
                                             src={product.image_src}
                                             alt='product image'
                                         />
-                                        <CardBody>
-                                            <Stack>
-                                                <Heading size='md'>{product.name}</Heading>
-                                            </Stack>
-                                            <Stack>
-                                                <NumberInput size='md' maxW={24} defaultValue={1}>
-                                                    <NumberInputField />
-                                                    <NumberInputStepper>
-                                                    <NumberIncrementStepper />
-                                                    <NumberDecrementStepper />
-                                                    </NumberInputStepper>
-                                                </NumberInput>
-                                            </Stack>
-                                        </CardBody>
+                                        <Flex as={CardBody} wrap='wrap' gap={4}>
+                                            <Heading size='md' w='100%'>{product.name}</Heading>
+                                            <Flex alignItems="center" justifyContent='space-between'>
+                                                <Text>Price: ${product.price}</Text>
+                                                <MobileNumberInput />
+                                            </Flex>
+                                        </Flex>
                                     </Card>
                                 )
                             )}
