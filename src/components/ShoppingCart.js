@@ -52,6 +52,7 @@ function ShoppingCart (props) {
                                     variant='outline'
                                     width='100%'
                                     align="center"
+                                    colorScheme="messenger"
                                     >
                                         <Image
                                             objectFit='cover'
