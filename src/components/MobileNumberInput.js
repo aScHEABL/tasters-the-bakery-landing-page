@@ -15,9 +15,9 @@ const MobileNumberInput = () => {
     const input = getInputProps()
   
     return (
-      <Flex maxW="40%">
+      <Flex flex="1 0 50%">
         <Button {...inc}>+</Button>
-        <Input {...input} />
+        <Input textAlign="center" {...input} />
         <Button {...dec}>-</Button>
       </Flex>
     )

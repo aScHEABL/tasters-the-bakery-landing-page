@@ -51,14 +51,9 @@ function ShoppingCart (props) {
                                     direction='row'
                                     overflow='hidden'
                                     variant='outline'
-                                    width='100%'
                                     align="center"
                                     backgroundColor="gray.600"
-                                    transition="transform 1s ease-in-out"
-                                    _hover={{
-                                        
-                                        
-                                    }}
+                                    px={4}
                                     >
                                         <Image
                                             objectFit='cover'
@@ -69,8 +64,8 @@ function ShoppingCart (props) {
                                         />
                                         <Flex as={CardBody} wrap='wrap' gap={4}>
                                             <Heading size='md' w='100%'>{product.name}</Heading>
-                                            <Flex alignItems="center" justifyContent='space-between'>
-                                                <Text>Price: ${product.price}</Text>
+                                            <Flex alignItems="center" justifyContent="space-between" >
+                                                <Text flex="1 2 50%">Price: ${product.price}</Text>
                                                 <MobileNumberInput />
                                             </Flex>
                                         </Flex>
