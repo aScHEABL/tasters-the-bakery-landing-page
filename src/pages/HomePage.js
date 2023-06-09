@@ -5,7 +5,7 @@ import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "./Logo";
+import Logo from "../components/Logo";
 
 function HomePage() {
     const { state } = useContext(AppContext);
