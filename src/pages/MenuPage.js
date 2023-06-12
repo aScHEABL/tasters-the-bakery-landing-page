@@ -7,8 +7,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import Logo from "../components/Logo";
 import CarouselImage from "../components/CarouselImage";
 import CarouselCard from "../components/CarouselCard";
-import menu_A from "../language/menu-zh-tw";
-import menu_B from "../language/menu-en-us";
+import menu from "../language/menu";
 import { v4 as uuidv4 } from 'uuid';
 
 function MenuPage(props) {
@@ -17,20 +16,16 @@ function MenuPage(props) {
     const btnRef = useRef();
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     
-    const assignCommonId = (array1, array2) => {
-        const menu_TW = array1.map((obj) => {
-            return { ...obj, id: uuidv4() };
-        });
-        
-        const menu_EN = array2.map((obj) => {
-            return { ...obj, id: uuidv4() };
+    const assignCommonId = (array) => {
+        const updated_menu = array.map((product) => {
+            return { ...product, id: uuidv4() };
         });
     
-        return { menu_TW, menu_EN };
+        return updated_menu;
     };
 
-    const { menu_TW, menu_EN } = assignCommonId(menu_A, menu_B);
-    const menu = state.language === "zh-tw" ? menu_TW : menu_EN ;
+    const menu_with_id = assignCommonId(menu);
+    
     
     useEffect(() => {
         dispatch({ type: 'UPDATE_MENU', payload: { menu } });
@@ -43,9 +38,9 @@ function MenuPage(props) {
                 <CarouselImage />
             </Box> */}
             <Flex wrap="wrap" gap={10} justify="center">
-                {menu.map((product, index) => (
+                {menu_with_id.map((product) => (
                     <Flex width="20%" wrap="wrap" justify="center" key={uuidv4()}>
-                        <CarouselCard product={product} onOpen={onOpen} btnRef={btnRef} index={index} />
+                        <CarouselCard product={product} onOpen={onOpen} btnRef={btnRef} />
                     </Flex>
                 ))}
             </Flex>

@@ -24,9 +24,9 @@ function reducer(state, action) {
             }
         
         case 'ADD_SHOPPING_CART':
-            const { index } = action.payload;
-            const selectedItem = state.menu[index];
-            // console.log(selectedItem);
+            const { id } = action.payload;
+            const selectedItem = state.menu.find((product) => product.id === id);
+            console.log(selectedItem);
 
             if (selectedItem) {
                 const newItem = {

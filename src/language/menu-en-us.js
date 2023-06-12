@@ -21,7 +21,7 @@ const menu = [
         name: "CHEESE QUESADILLA",
         price: 330,
         image_src: "https://cdn.imweb.me/thumbnail/20220405/37c912db0132a.jpeg",
-        description: "The best cheese for quesadillas include Oaxaca, mozzarella, Mexican, Monterey Jack and cheddar. "
+        description: "The best cheese for quesadillas include Oaxaca, mozzarella, Mexican, Monterey Jack and cheddar."
     },
     {
         name: "FRUITCAKE - 7 INCHES",
