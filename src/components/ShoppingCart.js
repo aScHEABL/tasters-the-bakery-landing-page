@@ -27,19 +27,19 @@ import enUsTranslation from "../language/en-us-lang.json";
 import MobileNumberInput from "./MobileNumberInput";
 import { v4 as uuidv4 } from 'uuid';
 
-function ShoppingCart (props) {
+function ShoppingCart () {
     const { state, dispatch } = useContext(AppContext);
     const { isOpen, onOpen, onClose } = useContext(AppContext).disclosure;
-    // const [isMouseOver, setMouseOver] = useState(false);
+    const [isMouseOver, setMouseOver] = useState(false);
 
     const btnRef = useRef();
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     
     const handleMouseEnter = (e) => {
-        // setMouseOver(true);
+        setMouseOver(true);
     }
     const handleMouseLeave = (e) => {
-        // setMouseOver(false);
+        setMouseOver(false);
     }
     return (
             <Drawer
@@ -60,7 +60,7 @@ function ShoppingCart (props) {
                                     <Card
                                     width="100%"
                                     wrap="wrap"
-                                    key={uuidv4()}
+                                    key={product.id}
                                     alignItems="flex-start"
                                     direction='row'
                                     overflow='hidden'
@@ -87,13 +87,13 @@ function ShoppingCart (props) {
                                             borderRadius={6}
                                         />
                                         <Flex as={CardBody} wrap='wrap' gap={4}>
-                                            <Heading size='md' w='100%'>{product.name}</Heading>
+                                            <Heading size='md' w='100%'>{state.language === 'zh-tw' ? product.name_TW : product.name_EN}</Heading>
                                             <Flex alignItems="center" justifyContent="space-between" >
                                                 <Text flex="1 2 50%">Price: ${product.price}</Text>
                                                 <MobileNumberInput />
                                             </Flex>
                                         </Flex>
-                                        {/* {isMouseOver ? <Text>True</Text> : <Text>False</Text>} */}
+                                        {isMouseOver ? <Text>True</Text> : <Text>False</Text>}
                                     </Card>
                                 )
                             )}

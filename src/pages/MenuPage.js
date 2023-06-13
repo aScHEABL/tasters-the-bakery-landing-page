@@ -26,9 +26,8 @@ function MenuPage(props) {
 
     const menu_with_id = assignCommonId(menu);
     
-    
     useEffect(() => {
-        dispatch({ type: 'UPDATE_MENU', payload: { menu } });
+        dispatch({ type: 'UPDATE_MENU', payload: { menu_with_id } });
         console.log("Menu language updated");
     }, [state.language])
     return (

@@ -20,14 +20,13 @@ function reducer(state, action) {
         case 'UPDATE_MENU':
             return {
                 ...state,
-                menu: action.payload.menu
+                menu: action.payload.menu_with_id
             }
         
         case 'ADD_SHOPPING_CART':
-            const { id } = action.payload;
-            const selectedItem = state.menu.find((product) => product.id === id);
-            console.log(selectedItem);
-
+            const { product } = action.payload;
+            const selectedItem = product
+            // console.log(selectedItem);
             if (selectedItem) {
                 const newItem = {
                 ...selectedItem,
@@ -42,7 +41,6 @@ function reducer(state, action) {
                 ]
                 };
             }
-            break;
         default:
             return state;
     }

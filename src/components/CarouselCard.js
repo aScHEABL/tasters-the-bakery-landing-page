@@ -14,9 +14,9 @@ function CarouselCard(props) {
   const { state, dispatch } = useContext(AppContext);
   const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
 
-  const handleClick = (id) => {
-    // console.log(`${id} added to shopping cart`);
-    dispatch({ type: 'ADD_SHOPPING_CART', payload: { id } })
+  const handleClick = (product) => {
+    console.log(`${product.name_TW}, ${product.name_EN} added to shopping cart`);
+    dispatch({ type: 'ADD_SHOPPING_CART', payload: { product } })
     console.log(state.cart);
   }
   return (
@@ -29,9 +29,11 @@ function CarouselCard(props) {
             borderRadius='lg'
           />
           <Stack mt='6' spacing='3' px="4">
-            <Heading size='md'>{props.product.name}</Heading>
+            <Heading size='md'>
+              {state.language === 'zh-tw' ? props.product.name_TW : props.product.name_EN}
+            </Heading>
             <Text color="gray.600">
-              {state.language === 'zh_tw' ? props.product.description_TW : props.product.description_EN}
+              {state.language === 'zh-tw' ? props.product.description_TW : props.product.description_EN}
             </Text>
           </Stack>
         </CardBody>
@@ -40,7 +42,7 @@ function CarouselCard(props) {
               {props.product.price} $ TWD
           </Text>
           <Button size='lg' variant='solid' colorScheme='blue' ref={props.btnRef}
-          onClick={() =>{ props.onOpen(); handleClick(props.product.id) }}>
+          onClick={() =>{ props.onOpen(); handleClick(props.product) }}>
             {displayLanguage.shopping_cart_btn}
           </Button>
         </CardFooter>
