@@ -40,12 +40,12 @@ function reducer(state, action) {
                 };
             }
         case 'UPDATE_PRODUCT_QUANTITY':
-            const productId = action.payload.id;
+            const productID = action.payload.id;
             const productQuantity = action.payload.quantity;
             return {
                 ...state,
                 cart: state.cart.map((product) => 
-                    product.id === productId ? { ...product, quantity: productQuantity } : product)
+                    product.id === productID ? { ...product, quantity: productQuantity } : product)
             }
         default:
             return state;
