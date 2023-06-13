@@ -25,11 +25,9 @@ function reducer(state, action) {
         
         case 'ADD_SHOPPING_CART':
             const { product } = action.payload;
-            const selectedItem = product
-            // console.log(selectedItem);
-            if (selectedItem) {
-                const newItem = {
-                ...selectedItem,
+            if (product) {
+                const newProduct = {
+                ...product,
                 quantity: 1 // You can set an initial quantity of 1 for the added item
                 };
 
@@ -37,9 +35,17 @@ function reducer(state, action) {
                 ...state,
                 cart: [
                     ...state.cart,
-                    newItem
+                    newProduct
                 ]
                 };
+            }
+        case 'UPDATE_PRODUCT_QUANTITY':
+            const productId = action.payload.id;
+            const productQuantity = action.payload.quantity;
+            return {
+                ...state,
+                cart: state.cart.map((product) => 
+                    product.id === productId ? { ...product, quantity: productQuantity } : product)
             }
         default:
             return state;

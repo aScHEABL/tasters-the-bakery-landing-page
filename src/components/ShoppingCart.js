@@ -21,6 +21,7 @@ import { Drawer,
     NumberInputStepper,
     NumberIncrementStepper,
     NumberDecrementStepper,
+    Box
     } from "@chakra-ui/react";
 import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
@@ -57,7 +58,10 @@ function ShoppingCart () {
                         <Flex wrap='wrap' w='100%' height='100%' gap={4} alignContent="flex-start">
                             {state.cart.map((product) => 
                                 (
-                                    <Card
+                                    <Flex
+                                    borderRadius={6}
+                                    rowgap={6}
+                                    columnGap={6}
                                     width="100%"
                                     wrap="wrap"
                                     key={product.id}
@@ -68,11 +72,11 @@ function ShoppingCart () {
                                     align="center"
                                     backgroundColor="gray.600"
                                     py={2}
-                                    px={4}
+                                    px={2}
                                     height='15%'
                                     transition="all 0.2s ease-in-out"
                                     _hover={{
-                                        height: '20%',
+                                        height: '22%',
                                         
                                     }}
                                     onMouseEnter={(e) => handleMouseEnter(e)}
@@ -86,15 +90,23 @@ function ShoppingCart () {
                                             alt='product image'
                                             borderRadius={6}
                                         />
-                                        <Flex as={CardBody} wrap='wrap' gap={4}>
+                                        <Flex wrap='wrap' gap={4} width="70%">
                                             <Heading size='md' w='100%'>{state.language === 'zh-tw' ? product.name_TW : product.name_EN}</Heading>
-                                            <Flex alignItems="center" justifyContent="space-between" >
-                                                <Text flex="1 2 50%">Price: ${product.price}</Text>
-                                                <MobileNumberInput />
+                                            <Flex alignItems="center" justifyContent="flex-start" gap={4} >
+                                                <Text fontSize='xl' flex="1 2 50%">Price: ${product.price}</Text>
+                                                <MobileNumberInput product={product} />
                                             </Flex>
                                         </Flex>
-                                        {isMouseOver ? <Text>True</Text> : <Text>False</Text>}
-                                    </Card>
+                                            {isMouseOver ? 
+                                                <Flex width="100%" justify="center" gap={4}>
+                                                    <Button>1</Button>
+                                                    <Button>2</Button>
+                                                    <Text></Text>
+                                                </Flex>
+                                                 : 
+                                                null
+                                            }
+                                    </Flex>
                                 )
                             )}
                         </Flex>
