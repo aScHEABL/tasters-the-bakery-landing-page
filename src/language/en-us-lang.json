@@ -10,7 +10,9 @@
     "order_now_btn": "ORDER ONLINE",
     "shopping_cart_btn": "ORDER",
     "shopping_cart_header": "SHOPPING CART",
+    "shopping_cart_product_price": "Price",
     "shopping_cart_product_remove_btn": "REMOVE",
+    "shopping_cart_product_total": "Total",
     "shopping_cart_cancel_btn": "CANCEL",
     "shopping_cart_checkout_btn": "CHECK OUT"
 }

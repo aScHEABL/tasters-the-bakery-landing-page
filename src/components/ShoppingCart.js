@@ -104,14 +104,14 @@ function ShoppingCart () {
                                         <Flex wrap='wrap' gap={4} width="70%">
                                             <Heading size='md' w='100%'>{state.language === 'zh-tw' ? product.name_TW : product.name_EN}</Heading>
                                             <Flex alignItems="center" justifyContent="flex-start" gap={4} >
-                                                <Text fontSize='xl' flex="1 2 50%">Price: ${product.price}</Text>
+                                                <Text fontSize='xl' flex="1 2 50%">{displayLanguage.shopping_cart_product_price}: ${product.price}</Text>
                                                 <MobileNumberInput product={product} />
                                             </Flex>
                                         </Flex>
                                             {product.id === hoveredItemId ? 
                                                 <Flex as={motion.div} width="100%" justify="flex-start" align-items="center" gap={44} animation={animation}>
                                                     <Button leftIcon={<GrClose />} colorScheme="red" variant='solid'>{displayLanguage.shopping_cart_product_remove_btn}</Button>
-                                                    <Text fontSize="2xl" textAlign="center">Total: ${product.price * product.quantity}</Text>
+                                                    <Text fontSize="2xl" textAlign="center">{displayLanguage.shopping_cart_product_total}: ${product.price * product.quantity}</Text>
                                                 </Flex>
                                                  : 
                                                 null
