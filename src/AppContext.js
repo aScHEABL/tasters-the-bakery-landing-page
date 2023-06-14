@@ -42,7 +42,12 @@ function reducer(state, action) {
                 ]
                 };
             }
-            break;
+        case 'UPDATE_PRODUCT_TOTAL_PRICE':
+            return {
+                ...state,
+                cart: state.cart.map((item) =>
+                item.id === action.payload.id ? { ...item, totalPrice: action.payload.totalPrice} : item)
+            }
         default:
             return state;
     }

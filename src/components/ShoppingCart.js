@@ -30,9 +30,65 @@ function ShoppingCart (props) {
                     <DrawerCloseButton />
                     <DrawerHeader>購物車</DrawerHeader>
                     <DrawerBody>
-
+                        <Flex wrap='wrap' w='100%' height='100%' gap={4} alignContent="flex-start">
+                            {state.cart.map((product) => 
+                                (
+                                    <Flex
+                                    borderRadius={6}
+                                    rowgap={6}
+                                    columnGap={6}
+                                    width="100%"
+                                    wrap="wrap"
+                                    key={product.id}
+                                    alignItems="flex-start"
+                                    direction='row'
+                                    overflow='hidden'
+                                    variant='outline'
+                                    align="center"
+                                    backgroundColor="gray.600"
+                                    py={2}
+                                    px={2}
+                                    height='15%'
+                                    transition="all 0.2s ease-in-out"
+                                    _hover={{
+                                        height: '22%',
+                                        
+                                    }}
+                                    onMouseEnter={() => handleMouseEnter(product.id)}
+                                    onMouseLeave={() => handleMouseLeave()}
+                                    >
+                                        <Image
+                                            objectFit='cover'
+                                            maxW='100px'
+                                            maxH='100px'
+                                            src={product.image_src}
+                                            alt='product image'
+                                            borderRadius={6}
+                                        />
+                                        <Flex wrap='wrap' gap={4} width="70%">
+                                            <Heading size='md' w='100%'>{state.language === 'zh-tw' ? product.name_TW : product.name_EN}</Heading>
+                                            <Flex alignItems="center" justifyContent="flex-start" gap={4} >
+                                                <Text fontSize='xl' flex="1 2 50%">{displayLanguage.shopping_cart_product_price}: ${product.price}</Text>
+                                                <MobileNumberInput product={product} />
+                                            </Flex>
+                                        </Flex>
+                                            {product.id === hoveredItemId ? 
+                                                <Flex as={motion.div} width="100%" justify="flex-start" align-items="center" gap={44} animation={animation}>
+                                                    <Button onClick={() => handleRemoveProduct(product)} leftIcon={<GrClose />} colorScheme="red" variant='solid'>{displayLanguage.shopping_cart_product_remove_btn}</Button>
+                                                    <Text fontSize="2xl" textAlign="center">{displayLanguage.shopping_cart_product_total}: ${product.totalPrice}</Text>
+                                                </Flex>
+                                                 : 
+                                                null
+                                            }
+                                    </Flex>
+                                )
+                            )}
+                        </Flex>
                     </DrawerBody>
                     <DrawerFooter>
+                        <Flex width="100%">
+                            <Text fontSize="2xl">{displayLanguage.shopping_cart_product_total}: $</Text>
+                        </Flex>
                         <Button variant='outline' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
