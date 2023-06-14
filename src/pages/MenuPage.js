@@ -37,7 +37,7 @@ function MenuPage(props) {
                 <CarouselImage />
             </Box> */}
             <Flex wrap="wrap" gap={10} justify="center">
-                {menu_with_id.map((product) => (
+                {state.menu.map((product) => (
                     <Flex width="20%" wrap="wrap" justify="center" key={product.id}>
                         <CarouselCard product={product} onOpen={onOpen} btnRef={btnRef} />
                     </Flex>
