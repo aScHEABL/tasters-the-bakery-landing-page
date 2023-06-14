@@ -123,9 +123,9 @@ function ShoppingCart () {
                     </DrawerBody>
                     <DrawerFooter>
                         <Button variant='outline' mr={3} onClick={onClose}>
-                            Cancel
+                            {displayLanguage.shopping_cart_cancel_btn}
                         </Button>
-                        <Button colorScheme='blue'>Save</Button>
+                        <Button colorScheme='blue'>{displayLanguage.shopping_cart_checkout_btn}</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>

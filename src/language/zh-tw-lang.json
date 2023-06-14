@@ -10,5 +10,7 @@
     "order_now_btn": "線上訂購",
     "shopping_cart_btn": "購物車",
     "shopping_cart_header": "購物車",
-    "shopping_cart_product_remove_btn": "移除"
+    "shopping_cart_product_remove_btn": "移除",
+    "shopping_cart_cancel_btn": "取消",
+    "shopping_cart_checkout_btn": "結帳"
 }
