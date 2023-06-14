@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { AppContext } from '../AppContext';
 import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
-import { AiOutlineStar } from "react-icons/ai";
-import { v4 as uuidv4 } from 'uuid';
 import menu_TW from "../language/menu-zh-tw";
 import menu_EN from "../language/menu-en-us";
 import { CardFooter, Card, CardBody, Image, Stack, Text, 

@@ -25,26 +25,33 @@ function reducer(state, action) {
         
         case 'ADD_SHOPPING_CART':
             const { product } = action.payload;
-            if (product) {
-                const newProduct = {
-                ...product,
-                quantity: 1
-                };
+            if (state.cart.some((item) => item.id === product.id)) {
                 return {
-                ...state,
-                cart: [
-                    ...state.cart,
-                    newProduct
-                ]
-                };
+                    ...state,
+                    cart: state.cart.map((item) =>
+                    item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
+                }
+            } else {
+                const newProduct = {
+                        ...product,
+                        quantity: 1
+                        };
+                        return {
+                        ...state,
+                        cart: [
+                            ...state.cart,
+                            newProduct
+                        ]
+                        };
             }
+            
         case 'UPDATE_PRODUCT_QUANTITY':
             const productID = action.payload.id;
             const productQuantity = action.payload.quantity;
             return {
                 ...state,
-                cart: state.cart.map((product) => 
-                    product.id === productID ? { ...product, quantity: productQuantity } : product)
+                cart: state.cart.map((item) => 
+                item.id === productID ? { ...item, quantity: productQuantity } : item)
             }
         default:
             return state;
