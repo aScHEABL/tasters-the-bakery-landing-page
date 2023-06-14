@@ -19,7 +19,8 @@ const MobileNumberInput = (props) => {
         dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: selectedProduct.quantity + 1 } });
         break;
       case 'DECREMENT':
-        dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: selectedProduct.quantity - 1 } });
+        if (selectedProduct.quantity === 1) return
+        else dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: selectedProduct.quantity - 1 } });
         break;
       default:
         break;
