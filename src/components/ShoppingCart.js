@@ -49,8 +49,12 @@ function ShoppingCart () {
         setHoveredItemId(itemId);
     }
     
-      const handleMouseLeave = () => {
+    const handleMouseLeave = () => {
         setHoveredItemId(null);
+    }
+
+    const handleRemoveProduct = (product) => {
+        dispatch({ type: 'REMOVE_SHOPPING_CART', payload: { product } });
     }
 
     return (
@@ -110,7 +114,7 @@ function ShoppingCart () {
                                         </Flex>
                                             {product.id === hoveredItemId ? 
                                                 <Flex as={motion.div} width="100%" justify="flex-start" align-items="center" gap={44} animation={animation}>
-                                                    <Button leftIcon={<GrClose />} colorScheme="red" variant='solid'>{displayLanguage.shopping_cart_product_remove_btn}</Button>
+                                                    <Button onClick={() => handleRemoveProduct(product)} leftIcon={<GrClose />} colorScheme="red" variant='solid'>{displayLanguage.shopping_cart_product_remove_btn}</Button>
                                                     <Text fontSize="2xl" textAlign="center">{displayLanguage.shopping_cart_product_total}: ${product.price * product.quantity}</Text>
                                                 </Flex>
                                                  : 

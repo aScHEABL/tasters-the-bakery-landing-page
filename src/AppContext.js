@@ -24,16 +24,15 @@ function reducer(state, action) {
             }
         
         case 'ADD_SHOPPING_CART':
-            const { product } = action.payload;
-            if (state.cart.some((item) => item.id === product.id)) {
+            if (state.cart.some((item) => item.id === action.payload.product.id)) {
                 return {
                     ...state,
                     cart: state.cart.map((item) =>
-                    item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
+                    item.id === action.payload.product.id ? { ...item, quantity: item.quantity + 1 } : item)
                 }
             } else {
                 const newProduct = {
-                        ...product,
+                        ...action.payload.product,
                         quantity: 1
                         };
                         return {
@@ -44,14 +43,18 @@ function reducer(state, action) {
                         ]
                         };
             }
+
+        case 'REMOVE_SHOPPING_CART':
+            return {
+                ...state,
+                cart: state.cart.filter((item) => item.id !== action.payload.product.id)
+            }
             
         case 'UPDATE_PRODUCT_QUANTITY':
-            const productID = action.payload.id;
-            const productQuantity = action.payload.quantity;
             return {
                 ...state,
                 cart: state.cart.map((item) => 
-                item.id === productID ? { ...item, quantity: productQuantity } : item)
+                item.id === action.payload.id ? { ...item, quantity: action.payload.quantity } : item)
             }
         default:
             return state;
