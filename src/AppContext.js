@@ -28,9 +28,8 @@ function reducer(state, action) {
             if (product) {
                 const newProduct = {
                 ...product,
-                quantity: 1 // You can set an initial quantity of 1 for the added item
+                quantity: 1
                 };
-
                 return {
                 ...state,
                 cart: [

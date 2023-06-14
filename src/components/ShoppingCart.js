@@ -21,27 +21,38 @@ import { Drawer,
     NumberInputStepper,
     NumberIncrementStepper,
     NumberDecrementStepper,
-    Box
+    Box,
+    keyframes
     } from "@chakra-ui/react";
 import zhTwTranslation from "../language/zh-tw-lang.json";
 import enUsTranslation from "../language/en-us-lang.json";
 import MobileNumberInput from "./MobileNumberInput";
-import { v4 as uuidv4 } from 'uuid';
+import { motion } from 'framer-motion';
+import { GrClose } from "react-icons/gr";
+
+const animationKeyframes = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+`;
+
+const animation = `${animationKeyframes} 0.25s ease-in`;
 
 function ShoppingCart () {
     const { state, dispatch } = useContext(AppContext);
     const { isOpen, onOpen, onClose } = useContext(AppContext).disclosure;
-    const [isMouseOver, setMouseOver] = useState(false);
+    const [hoveredItemId, setHoveredItemId] = useState(null);
 
     const btnRef = useRef();
     const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
     
-    const handleMouseEnter = (e) => {
-        setMouseOver(true);
+    const handleMouseEnter = (itemId) => {
+        setHoveredItemId(itemId);
     }
-    const handleMouseLeave = (e) => {
-        setMouseOver(false);
+    
+      const handleMouseLeave = () => {
+        setHoveredItemId(null);
     }
+
     return (
             <Drawer
                 size='md'
@@ -79,8 +90,8 @@ function ShoppingCart () {
                                         height: '22%',
                                         
                                     }}
-                                    onMouseEnter={(e) => handleMouseEnter(e)}
-                                    onMouseLeave={(e) => handleMouseLeave(e)}
+                                    onMouseEnter={() => handleMouseEnter(product.id)}
+                                    onMouseLeave={() => handleMouseLeave()}
                                     >
                                         <Image
                                             objectFit='cover'
@@ -97,11 +108,10 @@ function ShoppingCart () {
                                                 <MobileNumberInput product={product} />
                                             </Flex>
                                         </Flex>
-                                            {isMouseOver ? 
-                                                <Flex width="100%" justify="center" gap={4}>
-                                                    <Button>1</Button>
-                                                    <Button>2</Button>
-                                                    <Text></Text>
+                                            {product.id === hoveredItemId ? 
+                                                <Flex as={motion.div} width="98%" justify="space-between" align-items="center" gap={4} animation={animation}>
+                                                    <Button leftIcon={<GrClose />} colorScheme="red" variant='solid'>{displayLanguage.shopping_cart_product_remove_btn}</Button>
+                                                    <Text fontSize="2xl" textAlign="center">Total: ${product.price * product.quantity}</Text>
                                                 </Flex>
                                                  : 
                                                 null

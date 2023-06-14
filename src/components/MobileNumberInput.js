@@ -11,6 +11,7 @@ import { AppContext } from "../AppContext";
 
 const MobileNumberInput = (props) => {
   const { state, dispatch } = useContext(AppContext);
+  const productQuantity = state.cart[state.cart.findIndex((item) => item.id === props.product.id)].quantity;
   const handleClick = (clickAction, product) => {
     const selectedProduct = state.cart.find((item) => item.id === product.id);
     switch (clickAction) {
@@ -23,7 +24,6 @@ const MobileNumberInput = (props) => {
       default:
         break;
     }
-    console.log(state.cart);
   }
 
   const handleChange = (valueString, product) => {;
@@ -32,7 +32,7 @@ const MobileNumberInput = (props) => {
 
   return (
     <Flex as={NumberInput}
-    value={state.cart[state.cart.findIndex((item) => item.id === props.product.id)].quantity}
+    value={productQuantity}
     max={999}
     min={1}
     keepWithinRange={true}
@@ -42,7 +42,7 @@ const MobileNumberInput = (props) => {
     gap={2}
     >
     <IconButton type="button" onClick={() => handleClick("INCREMENT", props.product )} icon={<BsPlus />} />
-    <NumberInputField textAlign="center" />
+    <NumberInputField textAlign="center" p={0} />
     <IconButton type="button" onClick={() => handleClick("DECREMENT", props.product )} icon={<BiMinus />} />
   </Flex>
   )

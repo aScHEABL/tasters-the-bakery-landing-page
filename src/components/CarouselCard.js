@@ -15,9 +15,7 @@ function CarouselCard(props) {
   const displayLanguage = state.language === "zh-tw" ? zhTwTranslation : enUsTranslation ;
 
   const handleClick = (product) => {
-    console.log(`${product.name_TW}, ${product.name_EN} added to shopping cart`);
     dispatch({ type: 'ADD_SHOPPING_CART', payload: { product } })
-    console.log(state.cart);
   }
   return (
     <LightMode>
