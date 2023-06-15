@@ -13,23 +13,20 @@ const MobileNumberInput = (props) => {
   const { state, dispatch } = useContext(AppContext);
   const productQuantity = state.cart[state.cart.findIndex((item) => item.id === props.product.id)].quantity;
   const handleClick = (clickAction, product) => {
-    const selectedProduct = state.cart.find((item) => item.id === product.id);
     switch (clickAction) {
       case 'INCREMENT':
-        dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: selectedProduct.quantity + 1 } });
+        dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: product.quantity + 1 } });
         break;
       case 'DECREMENT':
-        if (selectedProduct.quantity === 1) return
-        else dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: selectedProduct.quantity - 1 } });
+        if (product.quantity === 1) return
+        else dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: product.quantity - 1 } });
         break;
       default:
         break;
     }
+    console.log(state.cart);
   }
 
-  const handleChange = (valueString, product) => {;
-    dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: +valueString } })
-  }
 
   return (
     <Flex as={NumberInput}
@@ -38,7 +35,6 @@ const MobileNumberInput = (props) => {
     min={1}
     keepWithinRange={true}
     clampValueOnBlur={true}
-    onChange={(valueString) => handleChange(+(valueString), props.product)}
     flex="1 0 50%"
     gap={2}
     >
