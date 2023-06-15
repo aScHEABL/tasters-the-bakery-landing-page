@@ -126,13 +126,15 @@ function ShoppingCart () {
                         </Flex>
                     </DrawerBody>
                     <DrawerFooter>
-                        <Flex width="50%">
-                            <Text fontSize="2xl">{displayLanguage.shopping_cart_product_total}: ${state.cart.map((item) => item.totalPrice).reduce((accumulator, currentValue) => accumulator + currentValue)}</Text>
+                        <Flex flex="1 1 60%">
+                            <Text fontSize="2xl">{displayLanguage.shopping_cart_product_total}: ${state.cart.map((item) => item.totalPrice).reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</Text>
                         </Flex>
-                        <Button variant='outline' mr={3} onClick={onClose}>
-                            {displayLanguage.shopping_cart_cancel_btn}
-                        </Button>
-                        <Button colorScheme='blue'>{displayLanguage.shopping_cart_checkout_btn}</Button>
+                        <Flex flex="1 1 40%" justify="flex-end">
+                            <Button variant='outline' mr={3} onClick={onClose}>
+                                {displayLanguage.shopping_cart_cancel_btn}
+                            </Button>
+                            <Button colorScheme='blue'>{displayLanguage.shopping_cart_checkout_btn}</Button>
+                        </Flex>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
