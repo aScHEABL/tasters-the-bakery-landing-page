@@ -115,7 +115,7 @@ function ShoppingCart () {
                                             {product.id === hoveredItemId ? 
                                                 <Flex as={motion.div} width="100%" justify="flex-start" align-items="center" gap={44} animation={animation}>
                                                     <Button onClick={() => handleRemoveProduct(product)} leftIcon={<GrClose />} colorScheme="red" variant='solid'>{displayLanguage.shopping_cart_product_remove_btn}</Button>
-                                                    <Text fontSize="2xl" textAlign="center">{displayLanguage.shopping_cart_product_total}: ${product.price * product.quantity}</Text>
+                                                    <Text fontSize="2xl" textAlign="center">{displayLanguage.shopping_cart_product_total}: ${product.totalPrice}</Text>
                                                 </Flex>
                                                  : 
                                                 null

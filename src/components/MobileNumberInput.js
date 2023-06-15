@@ -16,17 +16,19 @@ const MobileNumberInput = (props) => {
     switch (clickAction) {
       case 'INCREMENT':
         dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: product.quantity + 1 } });
+        const totalPriceIncrement = product.price * (product.quantity + 1);
+        dispatch({ type: "UPDATE_PRODUCT_TOTAL_PRICE", payload: { id: product.id, totalPrice: totalPriceIncrement } });
         break;
       case 'DECREMENT':
         if (product.quantity === 1) return
-        else dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: product.quantity - 1 } });
+        dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', payload: { id: product.id, quantity: product.quantity - 1 } });
+        const totalPriceDecrement = product.price * (product.quantity - 1);
+        dispatch({ type: "UPDATE_PRODUCT_TOTAL_PRICE", payload: { id: product.id, totalPrice: totalPriceDecrement } });
         break;
       default:
         break;
     }
-    console.log(state.cart);
   }
-
 
   return (
     <Flex as={NumberInput}

@@ -33,7 +33,8 @@ function reducer(state, action) {
             } else {
                 const newProduct = {
                         ...action.payload.product,
-                        quantity: 1
+                        quantity: 1,
+                        totalPrice: action.payload.product.price
                         };
                         return {
                         ...state,
@@ -55,6 +56,13 @@ function reducer(state, action) {
                 ...state,
                 cart: state.cart.map((item) => 
                 item.id === action.payload.id ? { ...item, quantity: action.payload.quantity } : item)
+            }
+
+        case 'UPDATE_PRODUCT_TOTAL_PRICE':
+            return {
+                ...state,
+                cart: state.cart.map((item) =>
+                item.id === action.payload.id ? { ...item, totalPrice: action.payload.totalPrice } : item)
             }
         default:
             return state;
