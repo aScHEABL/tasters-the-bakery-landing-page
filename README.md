@@ -4,6 +4,11 @@ This is the [Shopping Cart](https://www.theodinproject.com/lessons/node-path-jav
 
 [Live Demo](https://ascheabl.github.io/tasters-the-bakery-landing-page/) <br>
 
+![screenshot of the live demo 0](./src/images/Screenshot_20230630_093002.png)
+![screenshot of the live demo 1](./src/images/Screenshot_20230630_095424.png)
+![gif of the live demo 0](./src/images/Peek%202023-06-15%2013-16.gif)
+
+
 ## Only supports 1920 x 1080 resolution currently !
 
 ## Built with
